@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>魔方控件库 - 滴滴出行</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="http://img6.didistatic.com/static/tms/cdn/z/mofang/mofang/0.1.0/mofang.min.css" />
+</head>
+<style>
+  body {
+      background: #fff;
+  }
+  .wrapper {
+      width: 930px;
+      margin: 20px auto;
+  }
+.didi-icon-user {
+    background-image: url(http://static.galileo.xiaojukeji.com/static/tms/other/didi-icon-user.png);
+}
+
+.didi-icon-edit {
+    background-image: url(http://static.galileo.xiaojukeji.com/static/tms/other/didi-icon-edit.png);
+}
+
+.didi-icon-info {
+    background-image: url(http://static.galileo.xiaojukeji.com/static/tms/other/didi-icon-info.png);
+}
+
+.didi-icon-menu-down {
+    background: url(http://static.galileo.xiaojukeji.com/static/tms/other/didi-icon-triangle-bottom.png) no-repeat center;
+}
+
+.didi-icon-menu-hamburger {
+    background-image: url(http://static.galileo.xiaojukeji.com/static/tms/other/didi-icon-menu-hamburger.png);
+}
+
+.didi-main-l .main-container {
+    min-height: 600px;
+}
+</style>
+<body ng-controller="selectController" class="ng-cloak">
+
+<div id="dd-alert"></div>
+<div class="didi-wrapper-l">
+<div class="didi-header">
+    <div class="entrance">
+        <a title="魔方控件库 - 滴滴出行" class="logo-href" href="javascript:void(0);">
+            <span class="logo"></span><span class="sep"></span>专项
+        </a>
+    </div>
+    <ul class="mainnav-wrapper">
+        <li class="active">
+            <a href="javascript:void(0)">静态扫描</a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0)">覆盖率</a>
+        </li>
+    </ul>
+    <div class="didi-sidebar-l">
+        <div class="didi-mainnav">
+            <ul class="mainMenu">
+                <li class="parent_li open">
+                    <a class="menu-each">
+                        <span class="didi-icon didi-icon-edit tip-icon"></span>iOS客户端<span class="didi-icon arrow"></span>
+                    </a>
+                </li>
+                <li class="parent_li open">
+                    <a class="menu-each">
+                        <span class="didi-icon didi-icon-edit tip-icon"></span>android客户端<span class="didi-icon arrow"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="nav-container">
+        <div class="loginInfo">
+            <span class="login">somebody</span>&nbsp;<span class="didi-icon didi-icon-menu-down"></span>
+            <br />
+            <span class="logout"><a href="javascript:void(0)">退出</a></span>
+        </div>
+    </div>
+</div>
+<div class="didi-main-l no-sidebar">
+  <div class="didi-main-l no-header">
+    <div class="main-container" id="main">
+      <div class="demo-con">
+          <span class="title">发送邮箱:</span>
+          <input type="text" class="didi-input" placeholder="多个邮箱请以分号分割">
+      </div>
+      <div class="wrapper">
+          <div class="demo-con">
+              <span class="title">分组select:</span>
+              <ui-select ng-model="type.selected" theme="select2" search-enabled="true">
+                  <ui-select-match placeholder="业务名称">{{$select.selected.name}}</ui-select-match>
+                  <ui-select-choices group-by="'type'" repeat="item in types | filter: $select.search"  position='down'>
+                    <span ng-bind-html="item.name | highlight: $select.search"></span>
+                    <small ng-bind-html="item.value | highlight: $select.search"></small>
+                  </ui-select-choices>
+              </ui-select>
+          </div>
+          <div class="demo-con">
+              <span class="title">多选select:</span>
+              <ui-select multiple ng-model="multiple.selectedCity" theme="select2"  sortable="true" close-on-select="false">
+                  <ui-select-match placeholder="请选择城市...">{{$item.name}}</ui-select-match>
+                  <ui-select-choices repeat="city in citys | filter: $select.search"  position='down'>
+                    <div ng-bind-html="city.name | highlight: $select.search"></div>
+                  </ui-select-choices>
+              </ui-select>
+          </div>
+          <div class="demo-con">
+              <span class="title">常用select:</span>
+              <ui-select ng-model="businessId" theme="select2" search-enabled="false">
+                  <ui-select-match placeholder="业务名称">{{$select.selected.name}}</ui-select-match>
+                  <ui-select-choices repeat="item.id as item in business | filter: $select.search">
+                    <div ng-bind-html="item.name | highlight: $select.search"></div>
+                  </ui-select-choices>
+              </ui-select>
+          </div>
+          <div class="demo-con">
+              <span class="title">禁用select:</span>
+              <ui-select ng-model="unabled.selected" theme="select2" ng-disabled="true">
+                  <ui-select-match placeholder="这个被禁用啦~">{{$select.selected.name}}</ui-select-match>
+                  <ui-select-choices repeat="item in citys | filter: $select.search">
+                    <div ng-bind-html="item.name | highlight: $select.search"></div>
+                    <small ng-bind-html="item.value | highlight: $select.search"></small>
+                  </ui-select-choices>
+              </ui-select>
+          </div>
+      </div>
+      <div class="demo-con">
+          <input type="checkbox" id="c1" value="c1" name="c" class="didi-checkbox" checked><label for="c1">替代文字</label>&nbsp;
+          <input type="checkbox" id="c2" value="c2" name="c" class="didi-checkbox"><label for="c2">替代文字</label>
+      </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="http://img6.didistatic.com/static/tms/cdn/z/angular/angular/1.5.0/angular.min.js"></script>
+<script src="http://img6.didistatic.com/static/tms/cdn/z/mofang-widget/mofang-widget/0.1.13/mofang-widget.min.js"></script>
+<script>
+    angular.module('SelectApp', ['ngSanitize','ui.select'])
+        .controller('selectController', ['$scope',  function ($scope) {
+
+            $scope.businessId = 1;
+            $scope.businessid = '';
+            $scope.business = [
+                {
+                    name: '专车',
+                    id: '1'
+                },
+                {
+                    name: '快车',
+                    id: '2'
+                }
+            ];
+
+            $scope.unabled = {};
+
+            $scope.type = {};
+            $scope.types = [
+                { name: '专车详情', value: '1', type: '专车' },
+                { name: '专车订单', value: '2', type: '专车' },
+                { name: '专车类型', value: '3', type: '专车' },
+                { name: '快车详情', value: '4', type: '快车' },
+                { name: '快车订单', value: '5', type: '快车' },
+                { name: '快车类型', value: '6', type: '快车' }
+            ];
+
+            $scope.citys = [
+                {name: '北京', value: 'beijing'},
+                {name: '上海', value: 'shanghai'},
+                {name: '深圳', value: 'shenzhen'},
+                {name: '广州', value: 'guangzhou'},
+                {name: '南京', value: 'nanjing'},
+                {name: '珠海', value: 'zhuhai'},
+                {name: '成都', value: 'chengdu'},
+                {name: '大连', value: 'dalian'},
+                {name: '太原', value: 'taiyuan'},
+                {name: '兰州', value: 'lanzhou'}
+            ]
+
+
+            $scope.multiple = {};
+            $scope.multiple.selectedCity = [$scope.citys[0]];
+        }]);
+    angular.bootstrap(document, ['SelectApp']);
+</script>
+</html>

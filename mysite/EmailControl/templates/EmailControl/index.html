@@ -1,0 +1,252 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>滴滴出行</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta name="author" content="shanxiaolan">
+    <!-- 魔方网站框架 CSS 文件 -->
+    <link rel="stylesheet" href="http://img6.didistatic.com/static/tms/cdn/z/mofang/mofang/0.1.0/mofang.min.css" />
+    <!-- 魔方组件库 CSS文件 -->
+    <link rel="stylesheet" href="http://img6.didistatic.com/static/tms/cdn/z/mofang-widget/mofang-widget/0.1.9/mofang-widget.min.css" />
+    <!-- 魔方组件库 JS 文件 -->
+    <!-- jQuery文件，请在魔方网站框架 JS 文件之前引入 -->
+    <script src="http://img6.didistatic.com/static/tms/cdn/z/jquery/jquery/2.1.0/jquery.min.js"></script>
+    <!-- sidebar 滚动条美化插件，请在魔方网站框架 JS 文件前引入 -->
+    <script src="http://img6.didistatic.com/static/tms/cdn/z/perfect-scrollbar/perfect-scrollbar/0.6.7/perfect-scrollbar.js"></script>
+    <!-- 魔方网站框架 JS 文件，只需在使用 sidebar 布局时候引入-->
+    <script src="http://img6.didistatic.com/static/tms/cdn/z/mofang/mofang/0.1.0/mofang.js"></script>
+    <!-- <link rel="stylesheet" href="/css/home/float_div.css" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="http://img6.didistatic.com/static/tms/cdn/z/mofang/mofang/0.1.0/mofang.min.css" />
+    <link rel="stylesheet" href="http://img6.didistatic.com/static/tms/cdn/z/mofang-widget/mofang-widget/0.1.9/mofang-widget.min.css" />
+    <style>
+        .didi-icon-user {
+            background-image: url(http://static.galileo.xiaojukeji.com/static/tms/other/didi-icon-user.png);
+        }
+
+        .didi-icon-edit {
+            background-image: url(http://static.galileo.xiaojukeji.com/static/tms/other/didi-icon-edit.png);
+        }
+
+        .didi-icon-info {
+            background-image: url(http://static.galileo.xiaojukeji.com/static/tms/other/didi-icon-info.png);
+        }
+
+        .didi-icon-menu-down {
+            background: url(http://static.galileo.xiaojukeji.com/static/tms/other/didi-icon-triangle-bottom.png) no-repeat center;
+        }
+
+        .didi-icon-menu-hamburger {
+            background-image: url(http://static.galileo.xiaojukeji.com/static/tms/other/didi-icon-menu-hamburger.png);
+        }
+
+        .didi-main-l .main-container {
+            min-height: 600px;
+        }
+
+
+        .demo-con:first-child {
+            margin-top: 30px;
+            margin-left: 20px;
+            line-height: 1.5;
+            word-spacing: 22;
+            text-align:left;
+        }
+
+        .demo-con {
+            margin-top: 20px;
+        }
+        .input_title{
+            display: inline-block;
+            width:88px;
+            margin-left: 20px;
+        }
+        .div_dis{
+            margin-top:10px;
+        }
+        .h3_color{
+            color:#FF8C00;
+        }
+
+        .ta_wid{
+            width:98%;
+            margin-left: 10px;
+        }
+        .input_title_right{
+            text-align:right;
+            line-height: 44px;
+        }
+        .input_title_small{
+            width:60px;
+        }
+        .input_small{
+            width:200px;
+        }
+        .input_smalller{
+            width:150px;
+        }
+        .valiateInput{
+        }
+        .form-item {
+          margin: 15px 0;
+        }
+    </style>
+
+</head>
+<body ng-controller="selectController">
+
+<div id="dd-alert"></div>
+<div class="didi-wrapper-l">
+    <div class="didi-header">
+    <div class="entrance">
+        <a title="扫描" class="logo-href" href="javascript:void(0);">
+            <span class="logo"></span><span class="sep"></span>扫描
+        </a>
+    </div>
+    <div class="nav-container">
+    </div>
+</div>    <div class="didi-sidebar-l">
+        <div class="didi-mainnav">
+    <ul class="mainMenu">
+        <li class="parent_li open">
+            <a class="menu-each">
+                <span class="didi-icon didi-icon-edit tip-icon"></span>IOS客户端<span class="didi-icon arrow"></span>
+            </a>
+        </li>
+    </ul>
+</div>    </div>
+
+    <div class="didi-main-l">
+        <div class="main-container" id="main">
+            <!-- <script type="text/javascript" src="/js/api/api_register.js"></script> -->
+<!-- <script type="text/javascript" src="/js/api/import_file.js"></script> -->
+
+<input type="hidden" id="apiId" name="paraInputParam">
+
+
+<div class="demo-con">
+    <div class="didi-title ta_wid">扫描参数</div>
+    <div id="api" class="div_dis">
+      <form id="scanForm" action="starttask/" method="post">
+        <div class="form-item">
+          <span class="input_title" >结果名称：</span><input type="text" class="didi-input valiateInput" placeholder="eg：result" id="resultName" name="resultName">
+        </div>
+        <div class="wrapper">
+            <div class="demo-con">
+                <span class="title">需扫描业务线:</span>
+                <!-- <ui-select ng-model="businessId" theme="select2" search-enabled="false">
+                    <ui-select-match placeholder="业务名称">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item.id as item in business | filter: $select.search">
+                      <div ng-bind-html="item.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select> -->
+            </div>
+
+        </div>
+        <!-- <span class="input_title" >业务线选择：</span><input type="text" class="didi-input valiateInput" placeholder="eg：result" id="businessName" name="businessName"> -->
+        <br/>
+        <!-- <br/> -->
+        <div class="demo-con">
+        <span class="input_title">扫描target：</span><input type="text" class="didi-input" placeholder="默认为SCarCommon" id="targetName" name="targetName">
+        </div>
+        <span class="input_title">访问路径：</span><input type="text" class="didi-input" placeholder="非必填" id="apiUrl" name="apiInputParam">
+        <br/>
+        <br/>
+        <span style="margin-left:300px;">
+        <button class="didi-btn didi-btn-highlight" id="registerApi" onclick="start_scan()">
+            开始扫描
+        </button>&nbsp;
+        </span>
+      </form>
+    </div>
+
+
+    <div class="didi-title ta_wid">用户信息</div>
+    <div id="http" class="div_dis">
+        <span class="input_title">启动用户</span><input type="text" class="didi-input valiateInput" placeholder="格式规范:mail.didichuxing.com 必填" id="domainName"
+               name="apiInputParam">
+        <span class="input_title">报告用户</span><input type="text" class="didi-input" placeholder="必填邮箱，多个邮箱以;隔开" id="host" name="apiInputParam">
+        <br/>
+        <br/>
+        <span style="margin-left:300px;">
+        <button class="didi-btn didi-btn-highlight" id="registerApi" onclick="create(this,'apiInputParam')" value="/dway/register/apiCreate">
+            添加信息
+        </button>&nbsp;
+        <button class="didi-btn didi-btn-ok didi-mr-20">&nbsp;&nbsp;清空</button>
+        </span>
+    </div>
+</div>
+</div>
+</div>
+<script src="http://img6.didistatic.com/static/tms/cdn/z/jquery/jquery/2.1.0/jquery.min.js"></script>
+<script src="http://img6.didistatic.com/static/tms/cdn/z/perfect-scrollbar/perfect-scrollbar/0.6.7/perfect-scrollbar.js"></script>
+<script src="http://img6.didistatic.com/static/tms/cdn/z/mofang/mofang/0.1.0/mofang.js"></script>
+<script src="http://img6.didistatic.com/static/tms/cdn/z/angular/angular/1.5.0/angular.min.js"></script>
+<script src="http://img6.didistatic.com/static/tms/cdn/z/mofang-widget/mofang-widget/0.1.13/mofang-widget.min.js"></script>
+<script>
+    angular.module('SelectApp', ['ngSanitize','ui.select'])
+        .controller('selectController', ['$scope',  function ($scope) {
+
+            $scope.businessId = 1;
+            $scope.businessid = '';
+            $scope.business = [
+                {
+                    name: '专快车',
+                    id: '1'
+                },
+                {
+                    name: '小巴',
+                    id: '2'
+                },
+                {
+                    name: '出租车',
+                    id: '3'
+                },
+                {
+                    name: '租车',
+                    id: '4'
+                }
+            ];
+        }]);
+    angular.bootstrap(document, ['SelectApp']);
+</script>
+<script>
+// function start_scan()
+// {
+//   var resultName = document.getElementById("resultName").value;
+//   var businessName = document.getElementById("businessName").value;
+//   document.getElementById("scanForm").submit();
+//
+//   // alert(resultName);
+// }
+
+function start_scan() {
+  var resultName = document.getElementById("resultName").value;
+  var businessName = document.getElementById("businessName").value;
+    $.ajax({
+        url: "starttask/",
+        type: "post",
+        data: {
+            "resultName": resultName,
+            "businessName":businessName
+        },
+        success: function (result) {
+
+            if(result!=null) {
+              var scanresult = result;
+              alert(scanresult);
+              if (scanresult == 0){
+                alert("SUCCESS");
+              }else {
+                alert("FAILED");
+              }
+            }
+        }
+    });
+}
+</script>
+</body>
+</html>

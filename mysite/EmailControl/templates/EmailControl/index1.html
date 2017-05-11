@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>iOS代码检测平台</title>
+</head>
+<body>
+	<div>
+		<form action="starttask/" method="post">
+		{% csrf_token %}
+			Email: <input type="text" name="email"/>
+			<br/>
+			<font size="1" color="red">备注：多个邮箱，请用";"隔开</font>
+			<br/>
+			主题: <input type="text" name="title"/>
+			<br/>
+			<input type="submit" value="提交"/>
+			<input type="reset" value="重置"/>
+		</form>
+	</div>
+</body>
+</html>
+
