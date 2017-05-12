@@ -64,9 +64,8 @@ def starttask(request):
 
     # check execute result
     if result_code == 0:
-        # success_count = send_mail(title, 'this is a error message', 'gysxl007@didichuxing.com', [email], fail_silently=False)
         text_content = '检测完毕，具体错误详见附件'
-        msg = EmailMultiAlternatives(title, text_content, 'gysxl007@126.com', email_list)
+        msg = EmailMultiAlternatives(title, text_content, '*********', email_list)
         msg.attach_file('./result.txt')
         msg.send()
     # if success_count > 0:
